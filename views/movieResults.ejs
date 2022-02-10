@@ -1,0 +1,56 @@
+<%- include ('partials/header')%>
+
+<p class="result">Movies with keyword "<%= keyword%>"</p>
+<div class="container">
+    <% if(results['Response']==='True'){ %>
+        <div id="data" hidden><%= JSON.stringify(movieDetails) %></div> <!-- send dato to the js file-->
+        <% movieDetails.forEach((data)=>{ %>
+            <div class="card">
+                <div class="card-image-box">
+                    <img class="card-image" src="<%= data['Poster']%>" onerror="this.src ='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQkmpiE3saxLv17jlQVpffuUAAtU95HJoaPRw&usqp=CAU'">
+                    <div class="black-filter">
+                        <p><a href="<%= data['Poster']%>" target="_blank"><i class="fas fa-eye"></i></a></p>
+                    </div>
+                </div>
+                <div class="card-description">
+                    <a><p class="card-title"><%= data['Title']%></p></a>
+                    <p class="card-rating"><span class="topic">IMDB rating:</span>  <i class="fas fa-star"></i> <span class="rating"><%= data['imdbRating']%></span></p>
+                    <p class="card-plot"><%= data['Plot'].substring(0,70)%>...</p> 
+                    <p><span class="topic">Type: </span> &nbsp;<%= data['Type']%> </p> 
+                    <p><span class="topic">Genre: </span> &nbsp;<%= data['Genre']%> </p> 
+                    <p class="heart"><span><i class="fas fa-thumbs-up"></i></i></span>  <%= data['imdbVotes']%></i></p> 
+                </div>    
+            </div>        
+        <% }); %>
+    <% } else{ %>
+        <h1><%= results['Error']%></h1>
+    <% } %>  
+</div>
+
+<div class="big-card">
+    <div class="movie-data">  
+        <img class="cover-image" src="" onerror="this.src ='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQkmpiE3saxLv17jlQVpffuUAAtU95HJoaPRw&usqp=CAU'">
+        <img class="main-image" src="" onerror="this.src ='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQkmpiE3saxLv17jlQVpffuUAAtU95HJoaPRw&usqp=CAU'">
+        <p class="close-icon"> x </p>
+        <div class="movie-details"> 
+            <p id="topic" class="movie-title"></p>   
+            <div class="movie-inside">
+                <p class="card-rating"><span id="topic">IMDB rating: </span><i class="fas fa-star"></i> <span class="rating"></span></p>
+                <p class="movie-type">Type: &nbsp;</p>
+                <p class="movie-genre">Genre: &nbsp;</p>
+                <p class="movie-lang">Language: &nbsp;</p>
+                <span id="topic">Plot:</span><br><p class="movie-plot"></p>
+                <p class="movie-release">Release date: &nbsp;</p>
+                <p class="movie-director">Director: &nbsp;</p>
+                <p class="movie-cast">Cast: &nbsp;</p>
+            </div> 
+                 
+        </div>
+    </div>
+    
+    
+</div>
+    
+
+
+<%- include ('partials/footer')%>
