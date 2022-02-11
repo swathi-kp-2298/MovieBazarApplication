@@ -9,3 +9,5 @@ and also install neccesary packages such as express,request,request-promise, etc
 to run the application type "node index.js"
 #description
 frist need to enter details to view the moview search page and then search the movie name EX:marvel or avenger etc and u will able to see the list of details of similar movie
+#hosted on heroku
+https://movie-bazar.herokuapp.com/
